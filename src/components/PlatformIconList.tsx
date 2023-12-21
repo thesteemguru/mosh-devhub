@@ -9,7 +9,7 @@ import {
 import { MdPhoneIphone } from "react-icons/md";
 import { SiNintendo } from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";
-import { HStack, Icon } from "@chakra-ui/react";
+import { Flex, Icon } from "@chakra-ui/react";
 import { Platform } from "../hooks/useGames";
 import { IconType } from "react-icons";
 
@@ -27,15 +27,21 @@ const PlatformIconList = ({ platforms }: Props) => {
     linux: FaLinux,
     ios: MdPhoneIphone,
     web: BsGlobe,
-    andriod: FaAndroid,
+    android: FaAndroid,
   };
 
   return (
-    <HStack marginY={1}>
-      {platforms.map((platform) => (
-        <Icon as={iconMap[platform.slug]} color="gray.500" />
+    <Flex direction="row" wrap="wrap" marginY={1}>
+      {platforms.map((platform, index) => (
+        <Icon
+          key={index}
+          as={iconMap[platform.slug]}
+          color="gray.500"
+          marginX={1} // Add margin for spacing between icons
+          marginY={0.5}
+        />
       ))}
-    </HStack>
+    </Flex>
   );
 };
 
